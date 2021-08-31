@@ -1,23 +1,34 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
 
+import PivotTable from './components/PivotTable';
+import data from '../src/data';
+const columnDimensions=[
+  { name: 'State', property: 'state' }
+];
+const rowDimensions=[
+  { name: 'Category', property: 'category' },
+  { name: 'Sub-Category', property: 'subCategory' }
+];
+const MainTitle = {
+  column: 'States',
+  row: 'Products'
+};
+const getColumnDimensionValues=()=>{
+  columnDimensions.map(column=>{
+    const { property } = column;
+    const allValues = data.map((record) => record[property]);
+    const values = Array.from(new Set(allValues));
+
+    return { column, values };
+  })
+ 
+}
 function App() {
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="">
+      <PivotTable Title={MainTitle} rowDimensions={rowDimensions} columnDimensions={columnDimensions} data={data}/>
     </div>
   );
 }
