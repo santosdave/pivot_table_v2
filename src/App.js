@@ -3,6 +3,7 @@ import './App.css';
 
 import PivotTable from './components/PivotTable';
 import data from '../src/data';
+const salesData=data.sort((a, b) => parseFloat(a.sales) - parseFloat(b.sales));
 const columnDimensions=[
   { name: 'State', property: 'state' }
 ];
@@ -14,23 +15,27 @@ const MainTitle = {
   column: 'States',
   row: 'Products'
 };
-const getColumnDimensionValues=()=>{
-  columnDimensions.map(column=>{
-    const { property } = column;
-    const allValues = data.map((record) => record[property]);
-    const values = Array.from(new Set(allValues));
+const metrics= "sales";
+const fullValues = salesData.map(x=> x.state);
+const sales=salesData.map(x=>x.sales || x.state);
+console.log(sales);
 
-    return { column, values };
-  })
- 
-}
+const values=Array.from(new Set(fullValues))
+
+
+  
+
+const columnDimensionValues= values;
+console.log(columnDimensionValues);
 function App() {
   
   return (
     <div className="">
-      <PivotTable Title={MainTitle} rowDimensions={rowDimensions} columnDimensions={columnDimensions} data={data}/>
+      <PivotTable Title={MainTitle} rowDimensions={rowDimensions} columnValues={columnDimensionValues} metrics={metrics} columnDimensions={columnDimensions} data={data}/>
+      
     </div>
   );
 }
+
 
 export default App;

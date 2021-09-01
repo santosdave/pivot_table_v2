@@ -1,6 +1,6 @@
 import React from 'react';
 import '../../styles/Head.css';
-function Head({Title, rowDimensions, columnDimensions}) {
+function Head({Title, rowDimensions, columnDimensions,columnValues}) {
     
     return (
         <div className={'head'}>
@@ -8,17 +8,24 @@ function Head({Title, rowDimensions, columnDimensions}) {
                 <th  colSpan={rowDimensions.length}>
                     {Title.row}
                 </th>
-                <th colSpan={columnDimensions.values.length}>
+                
+                <th colSpan={columnValues.length}>
                      {Title.column}
                 </th>
+                
+                
             </tr>
             <tr className={'subTitle'}>
                 {rowDimensions.map((row)=>
                     <th className={'subTitle-row'} key={row.name}>{row.name}</th>
                 )}
-                 {columnDimensions.map((column)=>
-                    <th className={'subTitle-row'} key={column.name}>{column.name}</th>
+             
+                {columnValues.map((column)=>
+                    
+                    <th className={'subTitle-column'} key={column}>{column}</th>
                 )}
+               
+                 
                 
             </tr>
         </div>

@@ -1,10 +1,11 @@
 .head {
     background: rgb(8, 43, 111);
+   
 }
 .mainTitle {
     color: white;
     font-weight: bold;
-    text-align: left;
+    text-align: center;
     text-transform: uppercase;
 }
 .mainTitle th{
@@ -28,7 +29,18 @@
     border-color: rgb(5, 29, 79);
 }
 .subTitle-row{
-    padding-right: 16px / 2;
+    padding-right: 30px;
+    text-align: left;
+   
+   
+}
+.subTitle-column-container{
+    display: flex;
+    overflow-x: hidden;
+    overflow-x: auto;
+}
+.subTitle-column{
+    padding-right: 16px;
     text-align: left;
    
 }

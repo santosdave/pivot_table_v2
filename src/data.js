@@ -113069,4 +113069,4 @@ const data = [
       "profit": 5.4201
     }
   ]
-  
+  export default data
