@@ -17,16 +17,9 @@ const MainTitle = {
 };
 const metrics= "sales";
 const fullValues = salesData.map(x=> x.state);
-const sales=salesData.map(x=>x.sales || x.state);
-console.log(sales);
-
 const values=Array.from(new Set(fullValues))
-
-
-  
-
 const columnDimensionValues= values;
-console.log(columnDimensionValues);
+
 function App() {
   
   return (

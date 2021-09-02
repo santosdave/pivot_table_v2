@@ -3,12 +3,7 @@ import "../../styles/Body.css"
 
 
 function Body({rowDimensions,columnDimensions,data,metrics}) {
-  /*   const aggregate={
-        previousValue=data[metrics],
-        currentValue=data[metrics],
-        currentIndex=0,
-        array=data[metrics],
-    } */
+    
     const finalizeAggregate=(value)=>{
         const roundingOff = Math.round(value);
         const thousands = 3;
@@ -18,7 +13,17 @@ function Body({rowDimensions,columnDimensions,data,metrics}) {
         }
         return digits.join('');
     }
-    console.log(finalizeAggregate())
+    
+    const Aggregate=()=>{
+        const value=data.length > 0
+        ?data
+            .map(item=>item[metrics])
+            .reduce( (previousValue, currentValue) =>
+            previousValue + currentValue)
+        : ''
+        return finalizeAggregate(value)
+    }
+    console.log(Aggregate());
     const [firstDimension, ...remainingRows] = rowDimensions;
     return (
         <div className="body">
